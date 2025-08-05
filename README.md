@@ -1,4 +1,4 @@
-# 🏫 High School Management system
+# 🏫 Criminal Cases management systems
 
 A full-stack web application designed to streamline the operations of a high school  from managing student records and results to ranking, teacher control, and overall school administration.
 
