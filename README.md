@@ -26,3 +26,8 @@ A full-stack web application designed to streamline the operations of a high sch
 
 ---
 
+## Tech-stack
+- React
+- next.js
+- Express 
+- postreSQL
