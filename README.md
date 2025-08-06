@@ -36,4 +36,12 @@ The goal of the project is to assist in **reuniting lost individuals with their 
 
 ---
 
+
+### Tech-stack
+- React
+- next.js
+- Express 
+- postreSQL
+=======
 ## 📂 Project Structure
+
