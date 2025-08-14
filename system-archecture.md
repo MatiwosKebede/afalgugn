@@ -1,5 +1,3 @@
-
-
 # System Architecture Design Document
 ## Afalgugn Project
 **Version**: 1.0  
@@ -172,23 +170,23 @@ Below is a textual description of the system architecture diagram, designed to b
         |
         | HTTPS (REST) / WebSocket (Chat)
         v
-[Load Balancer: NGINX/AWS ELB]
+[Load Balancer: AWS]
         |
         | Distributes traffic
         v
 [Backend: Node.js + Express.js (Docker)]
     | REST API (/api/v1/users, /reports, etc.)
     | WebSocket Server (Socket.io)
-    | Middleware (JWT, express-validator, rate-limit)
+    | Middleware (express-validator)
     |
     | Sequelize Queries   | Redis (Caching)
     v                    v
 [MySQL Database]      [Redis Cache]
     | Tables: Users, Report, Chat, etc.
     |
-    | HTTP/SMTP
+    | HTTP
     v
-[External Services: SendGrid/AWS SES, S3 (Optional)]
+[External Services: AWS SES]
     |
     | Metrics/Logs
     v
@@ -202,9 +200,9 @@ Below is a textual description of the system architecture diagram, designed to b
 - Color-code layers: Client (blue), Backend (green), Database (orange), External Services (purple), Monitoring (gray).
 - Include labels for protocols (HTTPS, WebSocket, SQL).
 
-This diagram can be created in Draw.io or Lucidchart by following the textual layout.
+This diagram can be created in DBDisagram or Lucidchart by following the textual layout.
 
----
+
 
 ## 5. Database Integration
 The database schema is defined in the Database Design Document (Version 1.0). Integration uses Sequelize ORM for:
