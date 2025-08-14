@@ -1,6 +1,4 @@
-Below is a comprehensive **System Architecture Design Document** for the **Afalgugn** project, incorporating all aspects of the backend design, database integration, and a detailed system architecture diagram description. The document is structured to provide a professional, clear, and thorough overview of the system, including the architecture diagram in a textual format suitable for professional documentation. Since a graphical diagram cannot be directly embedded, I will describe it in detail using a textual representation that can be translated into tools like dbdiagram.io, Lucidchart, or Draw.io for visualization. The document builds on the previous Database Design Document and Backend Design Document, ensuring alignment with the Afalgugn project requirements.
 
----
 
 # System Architecture Design Document
 ## Afalgugn Project
