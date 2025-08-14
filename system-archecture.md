@@ -225,7 +225,7 @@ APIs are RESTful, versioned (/api/v1), and modularized using express.Router. Bel
 
 | Endpoint                  | Method | Description                          | Request Body/Params                  | Response                     |
 |---------------------------|--------|--------------------------------------|--------------------------------------|------------------------------|
-| /users/register           | POST   | Register a new user                  | { fullname, email, password, language_id } | { user_id, message }        |
+| /users/register           | POST   | Register a new user                  | { fullname, email, password } | { user_id, message }        |
 | /users/login              | POST   | User login                           | { email, password }                  | { token, user }             |
 | /users/verify/:code       | GET    | Verify email with code               | Params: code                         | { message }                  |
 | /reports                  | POST   | Submit missing person report         | { person_name, age, location, description } | { report_id }               |
@@ -360,7 +360,7 @@ exports.registerUser = async (req, res, next) => {
   try {
     const { fullname, email, password, language_id } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({ fullname, email, password: hashedPassword, language_id });
+    const user = await User.create({ fullname, email, password: hashedPassword});
     const code = Math.random().toString(36).substring(2, 8);
     await Verification_Code.create({ user_id: user.user_id, code, expire_date: new Date(Date.now() + 3600000) });
     // Send email with nodemailer
