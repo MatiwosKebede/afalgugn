@@ -372,7 +372,3 @@ exports.registerUser = async (req, res, next) => {
   }
 };
 ```
-
----
-
-This document provides a professional, detailed system architecture for Afalgugn, including a textual diagram description for visualization. To generate the diagram, use tools like Draw.io or Lucidchart with the provided layout. For a PDF version or further refinements (e.g., specific diagram syntax for dbdiagram.io), let me know!
