@@ -1,0 +1,137 @@
+/* styles/Contact.module.css */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  color:#666;
+  animation: fade-in 1s ease forwards;
+  animation-timeline: view(); /* Scroll-based */
+  animation-range: entry 0% cover 70%;
+  visibility:hidden;
+  animation-delay: 1s;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    visibility:hidden;
+  }
+  to {
+    opacity: 1;
+    visibility:visible;
+  }
+}
+
+
+.heading {
+  font-weight: 700;
+  text-align: center;
+}
+
+.subheading {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #666;
+}
+
+.contactSection {
+  border-radius: 12px;
+  margin-bottom: 4rem;
+}
+
+.contactGrid {
+  width:100%;
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.contactItem {
+  flex: 1 1 200px;
+  text-align: center;
+  color: #1a4621;
+  font-size: 1.1rem;
+}
+
+.icon {
+  font-size: 1rem;
+}
+
+.form {
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+ .email{
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.email:focus{
+  outline:none;
+}
+
+.submitButton {
+  background-color: #40916c;
+  color: white;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:  0.3s;
+}
+
+.submitButton:hover {
+  background-color: #2d6a4f;
+}
+
+.courseSection {
+  text-align: center;
+}
+
+.courseSection h2 {
+  font-size: 2.5rem;
+  color: #1b4332;
+  margin-bottom: 1rem;
+}
+
+.courseSection p {
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.courseCard {
+  background: #e9f5ec;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.courseCard:hover {
+  transform: translateY(-5px);
+}
+
+.courseCard h3 {
+  color: #2d6a4f;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.courseCard p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
