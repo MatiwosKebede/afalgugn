@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Missing Person</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 5px;
+            background-color: #007bff; /* Blue for logo circle */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            margin: 0 10px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .signup {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero {
+            text-align: left;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            color: #007bff; /* Blue for "Report Missing" */
+            margin-bottom: 0;
+        }
+
+        .hero h1 span {
+            color: #fd7e14; /* Orange for "person" */
+        }
+
+        .language-toggle {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .language-toggle label {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .language-toggle .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .language-toggle .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .language-toggle .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .language-toggle .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        .language-toggle input:checked + .slider {
+            background-color: #007bff;
+        }
+
+        .language-toggle input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .language-toggle .labels {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .language-toggle .labels span {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .language-toggle .labels .amharic {
+            margin-right: 5px;
+        }
+
+        .language-toggle .labels .english {
+            margin-left: 5px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .upload {
+            position: relative;
+        }
+
+        .upload input[type="file"] {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .upload .placeholder {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+        }
+
+        .upload .placeholder img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.webp" alt="QAlajugn">
+            Alajugn
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Testimonial</a></li>
+                <li><a href="#">Report Missing</a></li>
+                <li><a href="#">Post Found Person</a></li>
+                <li><a href="#">Recent</a></li>
+            </ul>
+        </nav>
+        <button class="signup">Sign up</button>
+    </header>
+
+    <section class="hero">
+        <h1>Report Missing <span>person</span></h1>
+    </section>
+
+    <div class="language-toggle">
+        <span>Amharic</span>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+        <span>English</span>
+    </div>
+
+    <form>
+        <label for="full-name">Full Name</label>
+        <input type="text" id="full-name" placeholder="">
+
+        <label for="age">Age</label>
+        <input type="number" id="age" placeholder="">
+
+        <label for="gender">Gender</label>
+        <select id="gender">
+            <option value=""></option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="contact-info">Contact Information</label>
+        <input type="text" id="contact-info" placeholder="">
+
+        <label for="date-missing">Date Missing</label>
+        <input type="date" id="date-missing">
+
+        <label for="last-seen">Last Seen Location</label>
+        <input type="text" id="last-seen" placeholder="">
+
+        <label for="upload-photo">Upload Photo</label>
+        <div class="upload">
+            <input type="file" id="upload-photo" accept="image/*">
+            <div class="placeholder">
+                <img src="profile_picture.jpg" alt="Cloud">
+                Upload Photo
+            </div>
+        </div>
+
+        <label for="physical-desc">Physical Description</label>
+        <textarea id="physical-desc" placeholder=""></textarea>
+
+        <button type="submit">Submit Report</button>
+    </form>
+
+    <script>
+        // Basic JS for file upload placeholder update
+        const fileInput = document.getElementById('upload-photo');
+        const placeholder = document.querySelector('.upload .placeholder');
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                placeholder.textContent = e.target.files[0].name;
+            } else {
+                placeholder.innerHTML = '<img src="https://via.placeholder.com/20x20?text=☁" alt="Cloud"> Upload Photo';
+            }
+        });
+
+        // Language toggle (placeholder, as Amharic labels not provided)
+        const toggle = document.querySelector('.switch input');
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                // Switch to English (default)
+                console.log('English');
+            } else {
+                // Switch to Amharic
+                console.log('Amharic');
+                // Would need to update labels here if Amharic text available
+            }
+        });
+    </script>
+</body>
+</html>
