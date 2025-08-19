@@ -1,5 +1,6 @@
 const express = require("express")
 const app = express()
+
 require('dotenv').config();
 app.use(express.json());
 app.use('/auth',require('./auth/signup/signup'))
@@ -16,5 +17,6 @@ swaggerDocs(app);
 
 app.listen(3000,()=>{
     console.log("server is running on 3000")
+
 
 })

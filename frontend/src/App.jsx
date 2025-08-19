@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+// Dummy Data
+
 const reports = Array.from({ length: 12 }, (_, i) => ({
   id: i + 1,
   name: `Fortuna Yimer ${i + 1}`,
@@ -8,6 +10,8 @@ const reports = Array.from({ length: 12 }, (_, i) => ({
   status: i % 2 === 0 ? "Found" : "Missing",
   img: `https://via.placeholder.com/200x200?text=Fortuna+Yimer+${i + 1}`,
 }));
+
+// Components
 
 const Header = () => (
   <header className="bg-gray-900 text-white flex justify-between items-center p-4 shadow-md">
