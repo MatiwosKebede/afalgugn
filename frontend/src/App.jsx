@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 // Dummy Data
+
 const reports = Array.from({ length: 12 }, (_, i) => ({
   id: i + 1,
   name: `Fortuna Yimer ${i + 1}`,
@@ -11,6 +12,7 @@ const reports = Array.from({ length: 12 }, (_, i) => ({
 }));
 
 // Components
+
 const Header = () => (
   <header className="bg-gray-900 text-white flex justify-between items-center p-4 shadow-md">
     <div className="flex items-center text-lg font-bold">
