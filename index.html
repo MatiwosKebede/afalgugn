@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Reports | Alajugn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {d
+            --primary: #007bff;
+            --secondary: #fd7e14;
+            --dark: #1f1f1f;
+            --light: #f8f9fa;
+            --card-shadow: 0 6px 24px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        html {
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--light);
+            color: #222;
+        }
+        header {
+            background: var(--dark);
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,123,255,0.15);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: var(--secondary);
+        }
+        .signup {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 8px 24px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+            transition: background 0.2s;
+        }
+        .signup:hover {
+            background: var(--secondary);
+        }
+        .hero {
+            text-align: center;
+            padding: 48px 0 24px 0;
+            background: linear-gradient(90deg, #e3f2fd 0%, #fff 100%);
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+        .hero h1 span {
+            color: var(--secondary);
+        }
+        .toggle {
+            text-align: center;
+            margin: 32px 0 24px 0;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        .toggle span {
+            padding: 8px 32px;
+            border-radius: 32px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            border: 2px solid transparent;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .toggle .missing {
+            background: #e9ecef;
+            color: #333;
+            border: 2px solid #e9ecef;
+        }
+        .toggle .found {
+            background: var(--secondary);
+            color: #fff;
+            border: 2px solid var(--secondary);
+        }
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .filters input, .filters select {
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: var(--radius);
+            width: 180px;
+            font-size: 16px;
+            background: #fff;
+            transition: border 0.2s;
+        }
+        .filters input:focus, .filters select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            padding: 0 40px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            padding: 0 0 18px 0;
+            transition: transform 0.15s, box-shadow 0.15s;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+        }
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        .card h3 {
+            font-size: 22px;
+            margin: 18px 0 6px 0;
+            font-weight: 700;
+        }
+        .card .date {
+            font-size: 15px;
+            color: #6c757d;
+            margin: 0;
+        }
+        .card .age {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+        .card .status {
+            color: var(--secondary);
+            font-weight: 700;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .card button {
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            padding: 8px 24px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            margin-top: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(253,126,20,0.08);
+            transition: background 0.2s;
+        }
+        .card button:hover {
+            background: var(--primary);
+        }
+        .pagination {
+            text-align: center;
+            margin: 32px 0;
+            color: var(--secondary);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 8px;
+        }
+        footer {
+            background: var(--primary);
+            padding: 18px 0;
+            text-align: center;
+            color: #fff;
+            margin-top: 48px;
+        }
+        footer .logo img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fff;
+            margin-bottom: 8px;
+        }
+        .social {
+            margin-top: 8px;
+        }
+        .social img {
+            width: 38px;
+            margin: 0 12px;
+            vertical-align: middle;
+            transition: transform 0.2s;
+        }
+        .social img:hover {
+            transform: scale(1.15);
+        }
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                padding: 0 12px;
+            }
+            header {
+                flex-direction: column;
+                gap: 12px;
+                padding: 18px 12px;
+            }
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .filters input, .filters select {
+                width: 100%;
+                min-width: 120px;
+            }
+            .toggle span {
+                padding: 8px 16px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/38x38?text=Q" alt="QAlajugn">
+            Alajugn
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Testimonial</a></li>
+                <li><a href="#">Report Missing</a></li>
+                <li><a href="#">Post Found</a></li>
+                <li><a href="#">Recent</a></li>
+            </ul>
+        </nav>
+        <button class="signup">Sign up</button>
+    </header>
+
+    <section class="hero">
+        <h1>Search <span>Reports</span></h1>
+    </section>
+
+    <div class="toggle">
+        <span class="missing">missing</span>
+        <span class="found">found</span>
+    </div>
+
+    <div class="filters">
+        <input type="text" placeholder="Name" aria-label="Name">
+        <input type="text" placeholder="Age" aria-label="Age">
+        <select aria-label="Gender">
+            <option>Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+        <input type="text" placeholder="Location" aria-label="Location">
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <img src="https://via.placeholder.com/400x220?text=Fortuna+Yimer" alt="Fortuna Yimer">
+            <h3>Fortuna Yimer</h3>
+            <p class="date">Jan 23, 2023</p>
+            <p class="age">23</p>
+            <div class="status">Found</div>
+            <button>Detail</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/400x220?text=Fortuna+Yimer" alt="Fortuna Yimer">
+            <h3>Fortuna Yimer</h3>
+            <p class="date">Jan 23, 2023</p>
+            <p class="age">23</p>
+            <div class="status">Found</div>
+            <button>Detail</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/400x220?text=Fortuna+Yimer" alt="Fortuna Yimer">
+            <h3>Fortuna Yimer</h3>
+            <p class="date">Jan 23, 2023</p>
+            <p class="age">23</p>
+            <div class="status">Found</div>
+            <button>Detail</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/400x220?text=Fortuna+Yimer" alt="Fortuna Yimer">
+            <h3>Fortuna Yimer</h3>
+            <p class="date">Jan 23, 2023</p>
+            <p class="age">23</p>
+            <div class="status">Found</div>
+            <button>Detail</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/400x220?text=Fortuna+Yimer" alt="Fortuna Yimer">
+            <h3>Fortuna Yimer</h3>
+            <p class="date">Jan 23, 2023</p>
+            <p class="age">23</p>
+            <div class="status">Found</div>
+            <button>Detail</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/400x220?text=Fortuna+Yimer" alt="Fortuna Yimer">
+            <h3>Fortuna Yimer</h3>
+            <p class="date">Jan 23, 2023</p>
+            <p class="age">23</p>
+            <div class="status">Found</div>
+            <button>Detail</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/400x220?text=Fortuna+Yimer" alt="Fortuna Yimer">
+            <h3>Fortuna Yimer</h3>
+            <p class="date">Jan 23, 2023</p>
+            <p class="age">23</p>
+            <div class="status">Found</div>
+            <button>Detail</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/400x220?text=Fortuna+Yimer" alt="Fortuna Yimer">
+            <h3>Fortuna Yimer</h3>
+            <p class="date">Jan 23, 2023</p>
+            <p class="age">23</p>
+            <div class="status">Found</div>
+            <button>Detail</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/400x220?text=Fortuna+Yimer" alt="Fortuna Yimer">
+            <h3>Fortuna Yimer</h3>
+            <p class="date">Jan 23, 2023</p>
+            <p class="age">23</p>
+            <div class="status">Found</div>
+            <button>Detail</button>
+        </div>
+    </div>
+
+    <div class="pagination">
+        - . . -
+    </div>
+
+    <footer>
+        <div class="logo">
+            <img src="https://via.placeholder.com/38x38?text=Q" alt="QAlajugn">
+        </div>
+        <div class="social">
+            <img src="https://via.placeholder.com/38x38?text=FB" alt="Facebook">
+            <img src="https://via.placeholder.com/38x38?text=TW" alt="Twitter">
+            <img src="https://via.placeholder.com/38x38?text=IG" alt="Instagram">
+        </div>
+        <div style="margin-top:12px;font-size:14px;opacity:0.8;">
+            &copy; 2024 Alajugn. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        // Optional: Add interactivity for toggles and filters if needed
+        // Example: Highlight selected toggle
+        document.querySelectorAll('.toggle span').forEach(el => {
+            el.addEventListener('click', function() {
+                document.querySelectorAll('.toggle span').forEach(s => s.classList.remove('found', 'missing'));
+                this.classList.add(this.textContent.trim() === 'found' ? 'found' : 'missing');
+            });
+        });
+    </script>
+</body>
+</html>
